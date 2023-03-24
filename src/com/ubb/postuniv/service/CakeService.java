@@ -2,13 +2,14 @@ package com.ubb.postuniv.service;
 
 import com.ubb.postuniv.domain.Cake;
 import com.ubb.postuniv.repository.IRepository;
+import com.ubb.postuniv.repository.IUpsertRepository;
 
 import java.util.List;
 
 public class CakeService {
-    private IRepository<Cake> cakeRepository;
+    private IUpsertRepository<Cake> cakeRepository;
 
-    public CakeService(IRepository<Cake> cakeRepository) {
+    public CakeService(IUpsertRepository<Cake> cakeRepository) {
         this.cakeRepository = cakeRepository;
     }
 

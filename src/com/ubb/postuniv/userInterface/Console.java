@@ -1,5 +1,6 @@
 package com.ubb.postuniv.userInterface;
 
+import com.ubb.postuniv.domain.TransactionValidationException;
 import com.ubb.postuniv.service.CakeService;
 import com.ubb.postuniv.service.TransactionService;
 
@@ -97,6 +98,8 @@ public class Console {
             int count = this.scanner.nextInt();
 
             this.transactionService.add(id, idCake, clientCard, date, time, count);
+        } catch (TransactionValidationException tvex) {
+            System.out.println("Transaction validation error: " + tvex.getMessage());
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
         }

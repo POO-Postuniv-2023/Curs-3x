@@ -2,6 +2,7 @@ package com.ubb.postuniv.service;
 
 import com.ubb.postuniv.domain.Cake;
 import com.ubb.postuniv.domain.Transaction;
+import com.ubb.postuniv.domain.TransactionValidationException;
 import com.ubb.postuniv.domain.TransactionValidator;
 import com.ubb.postuniv.repository.IRepository;
 
@@ -21,7 +22,8 @@ public class TransactionService {
         this.transactionValidator = transactionValidator;
     }
 
-    public void add(int id, int idCake, int clientCard, String date, String time, int count) throws Exception {
+    // TODO: make a RepositoryException exception class
+    public void add(int id, int idCake, int clientCard, String date, String time, int count) throws TransactionValidationException, Exception {
         Transaction transaction = new Transaction(id, idCake, clientCard, date, time, count);
         this.transactionValidator.validate(transaction, this.cakeRepository);
         this.transactionRepository.create(transaction);
